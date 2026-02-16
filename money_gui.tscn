@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://f6cdnhim5sq7"]
+
+[ext_resource type="Texture2D" uid="uid://dkgp0csiarmkv" path="res://Sci-Fi UI Game Asset Pack/green assets/panels/panel-header-1.png" id="1_d6mcr"]
+[ext_resource type="Script" uid="uid://dsc27yp2pciy" path="res://Scenes/label.gd" id="2_tq1f0"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 324.0
+offset_bottom = 96.0
+
+[node name="Money GUI" type="Node2D" parent="Control"]
+position = Vector2(183, 8)
+
+[node name="PanelHeader1" type="Sprite2D" parent="Control/Money GUI"]
+position = Vector2(-18.5, 32.499996)
+scale = Vector2(0.57849455, 0.33333334)
+texture = ExtResource("1_d6mcr")
+
+[node name="Label" type="Label" parent="Control/Money GUI"]
+offset_left = -161.0
+offset_top = 18.0
+offset_right = 108.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 21
+text = "                                                 $0"
+script = ExtResource("2_tq1f0")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="Control/Money GUI"]
+offset_left = -144.0
+offset_top = 18.0
+offset_right = -69.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 21
+text = "Money:"

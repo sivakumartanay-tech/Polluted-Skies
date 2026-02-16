@@ -1,0 +1,113 @@
+[gd_scene load_steps=16 format=3 uid="uid://mo7wgf1s5aj6"]
+
+[ext_resource type="Texture2D" uid="uid://cqgjb2o8b2ee" path="res://Free 3 Cyberpunk Sprites Pixel Art/2 Punk/Punk_attack1.png" id="1_xratm"]
+[ext_resource type="Texture2D" uid="uid://dl78en1c5ym0u" path="res://Free 3 Cyberpunk Sprites Pixel Art/2 Punk/Punk_idle.png" id="2_r7euu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m86t4"]
+atlas = ExtResource("1_xratm")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nw4hp"]
+atlas = ExtResource("1_xratm")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qual2"]
+atlas = ExtResource("1_xratm")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d0fi"]
+atlas = ExtResource("1_xratm")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me11b"]
+atlas = ExtResource("1_xratm")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_upfif"]
+atlas = ExtResource("1_xratm")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xomh"]
+atlas = ExtResource("2_r7euu")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5xr7q"]
+atlas = ExtResource("2_r7euu")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc5rb"]
+atlas = ExtResource("2_r7euu")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nb57"]
+atlas = ExtResource("2_r7euu")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_odo6e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m86t4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nw4hp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qual2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d0fi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me11b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_upfif")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xomh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5xr7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc5rb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nb57")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xratm"]
+radius = 9.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r7euu"]
+size = Vector2(20, 19)
+
+[node name="Bad guy" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_odo6e")
+animation = &"Attack"
+autoplay = "Idle"
+frame_progress = 0.17905037
+
+[node name="hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(-12, 6)
+shape = SubResource("CapsuleShape2D_xratm")
+
+[node name="attack" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
+position = Vector2(5, 3)
+shape = SubResource("RectangleShape2D_r7euu")
