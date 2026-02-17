@@ -1,7 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://mo7wgf1s5aj6"]
+[gd_scene load_steps=20 format=3 uid="uid://mo7wgf1s5aj6"]
 
+[ext_resource type="Script" uid="uid://vfq6wnt4q1gh" path="res://Scenes/bad_guy.gd" id="1_r7euu"]
 [ext_resource type="Texture2D" uid="uid://cqgjb2o8b2ee" path="res://Free 3 Cyberpunk Sprites Pixel Art/2 Punk/Punk_attack1.png" id="1_xratm"]
 [ext_resource type="Texture2D" uid="uid://dl78en1c5ym0u" path="res://Free 3 Cyberpunk Sprites Pixel Art/2 Punk/Punk_idle.png" id="2_r7euu"]
+[ext_resource type="Texture2D" uid="uid://c51a4bnnnkqry" path="res://Free 3 Cyberpunk Sprites Pixel Art/2 Punk/Punk_hurt.png" id="4_m86t4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m86t4"]
 atlas = ExtResource("1_xratm")
@@ -42,6 +44,14 @@ region = Rect2(96, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4nb57"]
 atlas = ExtResource("2_r7euu")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odo6e"]
+atlas = ExtResource("4_m86t4")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ctwuf"]
+atlas = ExtResource("4_m86t4")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_odo6e"]
 animations = [{
@@ -84,6 +94,17 @@ animations = [{
 "loop": true,
 "name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odo6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ctwuf")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xratm"]
@@ -93,12 +114,12 @@ radius = 9.0
 size = Vector2(20, 19)
 
 [node name="Bad guy" type="Node2D"]
+script = ExtResource("1_r7euu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_odo6e")
-animation = &"Attack"
+animation = &"hurt"
 autoplay = "Idle"
-frame_progress = 0.17905037
 
 [node name="hurtbox" type="Area2D" parent="."]
 
@@ -111,3 +132,5 @@ shape = SubResource("CapsuleShape2D_xratm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
 position = Vector2(5, 3)
 shape = SubResource("RectangleShape2D_r7euu")
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
