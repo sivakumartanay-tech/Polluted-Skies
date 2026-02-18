@@ -13,7 +13,7 @@ var max_air_jups = 0
 
 
 func _physics_process(delta: float) -> void:
-	if move and not is_attacking:
+	if move:
 		# Add the gravity.
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -42,16 +42,16 @@ func _physics_process(delta: float) -> void:
 			player.flip_h = true
 		else:
 			player.flip_h = false
-		
-		if not is_on_floor() and not jumping and not is_attacking:
-			player.play("Jump")
-		elif jumping and not is_attacking:
-			player.play("Air jump")
-		else:
-			if direction != 0 and move and not is_attacking:
-				player.play("Run")
-			elif  direction == 0 and not is_attacking:
-				player.play("Idle")
+		if not is_attacking:
+			if not is_on_floor() and not jumping:
+				player.play("Jump")
+			elif jumping:
+				player.play("Air jump")
+			else:
+				if direction != 0 and move :
+					player.play("Run")
+				elif  direction == 0:
+					player.play("Idle")
 
 
 		move_and_slide()
@@ -63,6 +63,7 @@ func attack():
 	attack_monitor.monitoring = true
 	attackbox.disabled = false
 	
+
 	player.play("Attack")
 	
 	await player.animation_finished
