@@ -1,3 +1,21 @@
 # Godot 4+ specific ignores
 .godot/
+.import/
+
+# Android export folder (if you use Android exports)
 /android/
+
+# Export files
+export.cfg
+export_credentials.cfg
+
+# Translations
+*.translation
+
+# Mono / C# (if not using C# you can keep this or ignore safely)
+.mono/
+data_*/
+mono_crash.*.json
+
+# Misc
+.nomedia
