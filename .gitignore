@@ -1,16 +1,21 @@
 # Godot 4+ specific ignores
 .godot/
-.nomedia
-
-# Godot-specific ignores
 .import/
+
+# Android export folder (if you use Android exports)
+/android/
+
+# Export files
 export.cfg
 export_credentials.cfg
 
-# Imported translations (automatically generated from CSV files)
+# Translations
 *.translation
 
-# Mono-specific ignores
+# Mono / C# (if not using C# you can keep this or ignore safely)
 .mono/
 data_*/
 mono_crash.*.json
+
+# Misc
+.nomedia
