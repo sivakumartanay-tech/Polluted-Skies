@@ -4,7 +4,7 @@ extends Node2D
 @onready var hurtbox: CollisionShape2D = $hurtbox/CollisionShape2D
 @onready var attack: Area2D = $attack
 @onready var attack_box: CollisionShape2D = $attack/CollisionShape2D
-
+var died = false
 var badguy_health = 30
 
 func _on_hurtbox_area_entered(area: Area2D) -> void:
@@ -13,6 +13,12 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		badguy_health -= 10
 		print(badguy_health)
 	if badguy_health <= 0:
+		died = true
+
+
+func _process(delta: float) -> void:
+	if died:
+		died = true
 		bad_guy.play("Death")
 		await bad_guy.animation_finished
 		bad_guy.queue_free()
@@ -20,3 +26,4 @@ func _on_hurtbox_area_entered(area: Area2D) -> void:
 		attack.monitoring = false
 		attack_box.disabled = true
 		hurtarea.monitoring = false
+		$".".queue_free()

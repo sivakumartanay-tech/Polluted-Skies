@@ -164,7 +164,7 @@ radius = 9.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r7euu"]
 size = Vector2(20, 19)
 
-[node name="Bad guy" type="Node2D"]
+[node name="Bad guy" type="Node2D" groups=["enemies"]]
 script = ExtResource("1_r7euu")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://ds05erc2pumgh"]
+[gd_scene load_steps=46 format=3 uid="uid://ds05erc2pumgh"]
 
 [ext_resource type="Script" uid="uid://cmxm55o6lpatc" path="res://Scripts/player_1.gd" id="1_tmdyv"]
 [ext_resource type="Texture2D" uid="uid://5epdec08vplc" path="res://Free 3 Cyberpunk Sprites Pixel Art/3 Cyborg/Cyborg_hurt.png" id="2_c4k0l"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cxn0d2xc21ibm" path="res://Free 3 Cyberpunk Sprites Pixel Art/3 Cyborg/Cyborg_run.png" id="4_aatkl"]
 [ext_resource type="Texture2D" uid="uid://ds22aahjuwj8o" path="res://Free 3 Cyberpunk Sprites Pixel Art/3 Cyborg/Cyborg_jump.png" id="5_aatkl"]
 [ext_resource type="Texture2D" uid="uid://drlol0hgiew43" path="res://Free 3 Cyberpunk Sprites Pixel Art/3 Cyborg/Cyborg_doublejump.png" id="6_lp8rx"]
+[ext_resource type="Texture2D" uid="uid://cawcrenifm7hj" path="res://Free 3 Cyberpunk Sprites Pixel Art/3 Cyborg/Cyborg_run_attack.png" id="8_vmi10"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qrwht"]
 atlas = ExtResource("6_lp8rx")
@@ -118,6 +119,30 @@ region = Rect2(192, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kslfe"]
 atlas = ExtResource("4_aatkl")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yt1lk"]
+atlas = ExtResource("8_vmi10")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gepg7"]
+atlas = ExtResource("8_vmi10")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lctyb"]
+atlas = ExtResource("8_vmi10")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s1db0"]
+atlas = ExtResource("8_vmi10")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fqwb"]
+atlas = ExtResource("8_vmi10")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty4o1"]
+atlas = ExtResource("8_vmi10")
 region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vmi10"]
@@ -235,6 +260,29 @@ animations = [{
 "loop": true,
 "name": &"Run",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yt1lk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gepg7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lctyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s1db0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fqwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty4o1")
+}],
+"loop": true,
+"name": &"Run attack",
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mndha"]
@@ -248,9 +296,9 @@ script = ExtResource("1_tmdyv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vmi10")
-animation = &"Attack"
-frame = 5
-frame_progress = 1.0
+animation = &"Run attack"
+frame_progress = 0.0046061776
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 5)
