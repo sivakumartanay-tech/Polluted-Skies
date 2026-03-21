@@ -45,9 +45,8 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 	if direction < 0:
 		player.flip_h = true
-		hitbox.position.x -= 16
 	else:
-		hitbox.position.x += 16
+
 		player.flip_h = false
 	if not dead:
 		if not is_on_floor() and not jumping:
