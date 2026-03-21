@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://jugguwsdwukn"]
+
+[ext_resource type="Script" uid="uid://bymovjt0ju827" path="res://Scripts/area_2d.gd" id="1_sjekq"]
+
+[node name="Win zone" type="Area2D"]
+monitoring = false
+script = ExtResource("1_sjekq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
