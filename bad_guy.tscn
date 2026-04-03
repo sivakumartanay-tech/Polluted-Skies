@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=3 uid="uid://mo7wgf1s5aj6"]
+[gd_scene load_steps=35 format=3 uid="uid://mo7wgf1s5aj6"]
 
-[ext_resource type="Script" uid="uid://vfq6wnt4q1gh" path="res://Scripts/bad_guy.gd" id="1_r7euu"]
+[ext_resource type="Script" uid="uid://dvcsjupuchjsy" path="res://bad_guy2.gd" id="1_s2247"]
 [ext_resource type="Texture2D" uid="uid://cqgjb2o8b2ee" path="res://Free 3 Cyberpunk Sprites Pixel Art/2 Punk/Punk_attack1.png" id="1_xratm"]
 [ext_resource type="Texture2D" uid="uid://dl78en1c5ym0u" path="res://Free 3 Cyberpunk Sprites Pixel Art/2 Punk/Punk_idle.png" id="2_r7euu"]
 [ext_resource type="Texture2D" uid="uid://b82pqlt8n255l" path="res://Free 3 Cyberpunk Sprites Pixel Art/2 Punk/Punk_death.png" id="3_nw4hp"]
 [ext_resource type="Texture2D" uid="uid://c51a4bnnnkqry" path="res://Free 3 Cyberpunk Sprites Pixel Art/2 Punk/Punk_hurt.png" id="4_m86t4"]
+[ext_resource type="Texture2D" uid="uid://bcxpfj445xatq" path="res://Free 3 Cyberpunk Sprites Pixel Art/2 Punk/Punk_run.png" id="5_s2247"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m86t4"]
 atlas = ExtResource("1_xratm")
@@ -69,6 +70,30 @@ region = Rect2(96, 0, 48, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_4nb57"]
 atlas = ExtResource("2_r7euu")
 region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or7j1"]
+atlas = ExtResource("5_s2247")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6iip"]
+atlas = ExtResource("5_s2247")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8htvd"]
+atlas = ExtResource("5_s2247")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le4l2"]
+atlas = ExtResource("5_s2247")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egsuk"]
+atlas = ExtResource("5_s2247")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eosfp"]
+atlas = ExtResource("5_s2247")
+region = Rect2(240, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_odo6e"]
 atlas = ExtResource("4_m86t4")
@@ -145,6 +170,29 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_or7j1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6iip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8htvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_le4l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_egsuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eosfp")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_odo6e")
 }, {
 "duration": 1.0,
@@ -162,14 +210,16 @@ animations = [{
 radius = 9.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r7euu"]
-size = Vector2(20, 19)
+size = Vector2(29, 19)
 
-[node name="Bad guy" type="Node2D" groups=["enemies"]]
-script = ExtResource("1_r7euu")
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s2247"]
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_s2247")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_odo6e")
-animation = &"Death"
+animation = &"Run"
 autoplay = "Idle"
 
 [node name="hurtbox" type="Area2D" parent="."]
@@ -180,11 +230,15 @@ shape = SubResource("CapsuleShape2D_xratm")
 
 [node name="attack" type="Area2D" parent="."]
 position = Vector2(-11, 6)
-monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="attack"]
-position = Vector2(16, -2)
+position = Vector2(20.5, -2)
 shape = SubResource("RectangleShape2D_r7euu")
-disabled = true
 
-[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-11, 6)
+shape = SubResource("CapsuleShape2D_s2247")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[connection signal="body_entered" from="attack" to="." method="_on_attack_body_entered"]

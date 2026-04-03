@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://25oorn60fyek"]
+
+[ext_resource type="Texture2D" uid="uid://cc1nay754x7pu" path="res://Free Industrial Zone Tileset/2 Background/Background.png" id="1_n45e2"]
+[ext_resource type="Script" uid="uid://kk3ulwyrmced" path="res://Scripts/main_menu.gd" id="1_yhxw7"]
+[ext_resource type="FontFile" uid="uid://cgehsjip1p84m" path="res://Pixelify_Sans (1)/static/PixelifySans-Bold.ttf" id="2_opfnp"]
+[ext_resource type="Texture2D" uid="uid://u5uenucdxo67" path="res://Sci-Fi UI Game Asset Pack/green assets/icons/icon2-next-1.png" id="3_cp0ys"]
+[ext_resource type="Texture2D" uid="uid://40n2bxkrxa56" path="res://Sci-Fi UI Game Asset Pack/green assets/hud/target-3.png" id="4_yhxw7"]
+[ext_resource type="Script" uid="uid://ba54os66hmgna" path="res://Scripts/mouseeffect.gd" id="5_trj04"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yhxw7")
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.5931336, 0.59313357, 0.59313357, 1)
+position = Vector2(577.7778, 324)
+scale = Vector2(2.006173, 2.006173)
+texture = ExtResource("1_n45e2")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 78.0
+offset_right = 954.0
+offset_bottom = 262.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(0.38431373, 0.4509804, 0.67058825, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 10
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("2_opfnp")
+theme_override_font_sizes/font_size = 100
+text = "Polluted Skies"
+
+[node name="Play" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 317.0
+offset_right = 640.0
+offset_bottom = 413.0
+texture_normal = ExtResource("3_cp0ys")
+
+[node name="Target3" type="Sprite2D" parent="."]
+position = Vector2(594, 305)
+scale = Vector2(1.4146341, 1.4146341)
+texture = ExtResource("4_yhxw7")
+script = ExtResource("5_trj04")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(579, 323)
+
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]

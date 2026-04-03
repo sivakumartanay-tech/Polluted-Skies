@@ -1,12 +1,11 @@
 extends Area2D
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	if get_tree().get_nodes_in_group("enemies").size() == 0:
-		$".".monitoring = true
-
-
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Players"):
-		get_tree().reload_current_scene()
+	if not body.is_in_group("Players"):
+		return
+
+	if get_tree().current_scene.scene_file_path == "res://Scenes/level_0.tscn":
+		get_tree().change_scene_to_file("res://Scenes/level_1.tscn")
+	elif get_tree().current_scene.scene_file_path == "res://Scenes/level_1.tscn":
+		get_tree().change_scene_to_file("res://Scenes/level_2.tscn")

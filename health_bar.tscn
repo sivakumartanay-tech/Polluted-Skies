@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn1k2ardvn1rm"]
+
+[ext_resource type="Script" uid="uid://re4h2fnanryc" path="res://Scenes/label_2.gd" id="2_m34ix"]
+[ext_resource type="Texture2D" uid="uid://1g6e6wkmg8df" path="res://Sci-Fi UI Game Asset Pack/green assets/panels/item-slot-1.png" id="2_qay8w"]
+
+[node name="Health Bar" type="CanvasLayer"]
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -670.0
+offset_bottom = 141.0
+grow_horizontal = 0
+
+[node name="Label3" type="Label" parent="Control2"]
+z_index = 1
+layout_mode = 0
+offset_left = 266.0
+offset_top = 16.0
+offset_right = 424.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 32
+text = "Health"
+
+[node name="Label2" type="Label" parent="Control2"]
+z_index = 2
+layout_mode = 0
+offset_left = 495.0
+offset_top = 18.0
+offset_right = 577.0
+offset_bottom = 63.0
+theme_override_font_sizes/font_size = 32
+text = "100%"
+script = ExtResource("2_m34ix")
+
+[node name="ItemSlot1" type="Sprite2D" parent="Control2"]
+position = Vector2(420, 41.000015)
+scale = Vector2(2.9914532, 0.45085454)
+texture = ExtResource("2_qay8w")

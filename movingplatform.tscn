@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8j5nx2vp8yan"]
+
+[ext_resource type="Texture2D" uid="uid://dcyxg7carfgyk" path="res://Power-Station-Free-Tileset-Pixel-Art/1 Tiles/Tile_25.png" id="1_aqx2l"]
+[ext_resource type="Texture2D" uid="uid://d3ph57n2pftqn" path="res://Power-Station-Free-Tileset-Pixel-Art/1 Tiles/Tile_26.png" id="2_y88h4"]
+[ext_resource type="Texture2D" uid="uid://cs1k0lash2pl3" path="res://Power-Station-Free-Tileset-Pixel-Art/1 Tiles/Tile_27.png" id="3_oju4h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtfta"]
+size = Vector2(92, 30)
+
+[node name="AnimatableBody2D" type="AnimatableBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_aqx2l")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(32, 0)
+texture = ExtResource("2_y88h4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(63, 0)
+texture = ExtResource("3_oju4h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_mtfta")
+one_way_collision = true

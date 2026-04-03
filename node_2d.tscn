@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://l2rus82wr7mb"]
+
+[ext_resource type="Texture2D" uid="uid://cc1nay754x7pu" path="res://Free Industrial Zone Tileset/2 Background/Background.png" id="1_v1qfn"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Win" type="Sprite2D" parent="."]
+modulate = Color(0.5931336, 0.59313357, 0.59313357, 1)
+position = Vector2(582, 328)
+scale = Vector2(2.006173, 2.006173)
+texture = ExtResource("1_v1qfn")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 471.0
+offset_top = 293.0
+offset_right = 729.0
+offset_bottom = 368.0
+theme_override_font_sizes/font_size = 26
+text = "         YOU WIN
+Restart to play again"
+metadata/_edit_use_anchors_ = true

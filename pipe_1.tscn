@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://du86cvro0ux3r"]
+
+[ext_resource type="Script" uid="uid://0f1r3hdmviar" path="res://pipe_1.gd" id="1_46x6n"]
+[ext_resource type="Texture2D" uid="uid://cknw4mb1leghq" path="res://Free Industrial Zone Tileset/1 Tiles/IndustrialTile_45.png" id="2_claq5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_baxmj"]
+size = Vector2(31.5, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46x6n"]
+size = Vector2(32, 25)
+
+[node name="Pipe 1" type="Node2D"]
+script = ExtResource("1_46x6n")
+pipe_texture = ExtResource("2_claq5")
+
+[node name="IndustrialTile45" type="Sprite2D" parent="."]
+position = Vector2(-40, 16)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-40, -6)
+shape = SubResource("RectangleShape2D_baxmj")
+one_way_collision_margin = 128.0
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(-39, -18)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-40, 19.5)
+shape = SubResource("RectangleShape2D_46x6n")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
